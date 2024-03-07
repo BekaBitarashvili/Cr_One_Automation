@@ -1,3 +1,4 @@
+import json
 import unittest
 import time
 
@@ -21,6 +22,7 @@ class TestWebsite(unittest.TestCase):
     def setUpClass(cls):
         options = Options()
         options.add_experimental_option("detach", True)
+
         cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         cls.driver.implicitly_wait(3)
         cls.driver.maximize_window()
@@ -32,7 +34,6 @@ class TestWebsite(unittest.TestCase):
     def test_01_incorrect_user_and_pass(self):
         self.driver.get("http://10.117.27.38:8090")
         time.sleep(3)
-
         self.driver.find_element(By.TAG_NAME, 'html').click()
         i = 5
         while i > 0:
@@ -55,25 +56,11 @@ class TestWebsite(unittest.TestCase):
                                                   "1]/div/span/span[2]"))
         )
         show_password.click()
-        time.sleep(5)
+        time.sleep(3)
         login_button = WebDriverWait(self.driver, 3).until(
             ec.element_to_be_clickable((By.ID, "login-btn"))
         )
         login_button.click()
-        status_code = self.driver.execute_script(
-            """
-        var entries = window.performance.getEntries();
-        if (entries.length > 0 && entries[0].response) {
-            return entries[0].response.status;
-        } else {
-            return null;
-        }
-        """
-        )
-        if status_code == 200:
-            print("ავტორიზაცია განხორციელდა წარმატებით")
-        else:
-            print("მომხმარებელმა ვერ გაიარა ავტორიზაცია")
         time.sleep(3)
 
     def test_02_correct_user_and_incorrect_pass(self):
@@ -122,9 +109,9 @@ class TestWebsite(unittest.TestCase):
         """
         )
         if status_code == 200:
-            print("ავტორიზაცია განხორციელდა წარმატებით")
+            print(f'ავტორიზაცია განხორციელდა წარმატებით, სტატუსია: {status_code}')
         else:
-            print("მომხმარებელმა ვერ გაიარა ავტორიზაცია")
+            print(f'მომხმარებელმა ვერ გაიარა ავტორიზაცია, სტატუსია: {status_code}')
         time.sleep(3)
 
     def test_03_incorrect_user_and_correct_pass(self):
@@ -173,9 +160,9 @@ class TestWebsite(unittest.TestCase):
         """
         )
         if status_code == 200:
-            print("ავტორიზაცია განხორციელდა წარმატებით")
+            print(f'ავტორიზაცია განხორციელდა წარმატებით, სტატუსია: {status_code}')
         else:
-            print("მომხმარებელმა ვერ გაიარა ავტორიზაცია")
+            print(f'მომხმარებელმა ვერ გაიარა ავტორიზაცია, სტატუსია: {status_code}')
         time.sleep(3)
 
     def test_04_only_pass(self):
