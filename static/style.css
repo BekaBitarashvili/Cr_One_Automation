@@ -1,0 +1,29 @@
+*{
+            font-family: 'FiraGO', sans-serif;
+            text-align: center;
+        }
+        :root{
+            --red: #fe553e;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: var(--red);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 12px;
+        }
+        section{
+            width: 100%;
+            padding: 1rem;
+            margin-top: 20px;
+            /*border: 1px solid red;*/
+        }

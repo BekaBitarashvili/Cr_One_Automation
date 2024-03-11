@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation</title>
+    <link href="https://free.bboxtype.com/embedfonts/?family=FiraGO:700" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+    <h1>CrystalOne-ის ავტომატიზაცია, აირჩიე შესაბამისი ღილაკი და გაუშვი კოდი</h1>
+    <section>
+        <button id="interface">ინტერფეისი</button>
+        <button id="auth">ავტორიზაცია</button>
+
+    </section>
+
+    <script>
+        document.getElementById('interface').addEventListener('click', function() {
+            fetch('/interface', {
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                alert(data.message);
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('auth').addEventListener('click', function() {
+            fetch('/auth', {
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                alert(data.message);
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

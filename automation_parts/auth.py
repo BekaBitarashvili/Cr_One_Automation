@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class TestWebsite(unittest.TestCase):
+class TestAuth(unittest.TestCase):
     driver = None
 
     @classmethod
@@ -83,6 +83,7 @@ class TestWebsite(unittest.TestCase):
         )
         username_field.send_keys("testAkido")
         time.sleep(4)
+
 
         elemento_to_triple_click = self.driver.find_element(By.ID, "password")
         actions.click(elemento_to_triple_click).click(elemento_to_triple_click).click(
