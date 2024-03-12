@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from selenium import webdriver
 from automation_parts.interface import TestWebsite
 from automation_parts.auth import TestAuth
+from automation_parts.restore_data import TestRestore
 
 app = Flask(__name__)
 test_website = TestWebsite()
 test_auth = TestAuth()
+test_restore = TestRestore()
 
 
 @app.route('/')
@@ -40,6 +42,23 @@ def auth():
         test_auth.test_03_incorrect_user_and_correct_pass()
         test_auth.test_04_only_pass()
         test_auth.test_05_correct_user_and_pass()
+
+        return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+
+@app.route('/restore', methods=['GET', 'POST'])
+def restore():
+    try:
+        test_restore.setUpClass()
+        test_restore.test_01_restore_data_button()
+        test_restore.test_02_check_button()
+        test_restore.test_03_check_inputs()
+        test_restore.test_04_fill_inputs_incorrect_data()
+        test_restore.test_05_fill_inputs_correct_personal()
+        test_restore.test_06_fill_inputs_correct_mobile()
+        test_restore.test_07_fill_inputs_correct_data()
 
         return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
     except Exception as e:
