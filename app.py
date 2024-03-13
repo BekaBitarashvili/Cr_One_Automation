@@ -64,6 +64,16 @@ def restore():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
 
+# error handling
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return '500 Internal Server Error'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
