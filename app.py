@@ -3,11 +3,13 @@ from selenium import webdriver
 from automation_parts.interface import TestWebsite
 from automation_parts.auth import TestAuth
 from automation_parts.restore_data import TestRestore
+from automation_parts.user_settings import TestSettings
 
 app = Flask(__name__)
 test_website = TestWebsite()
 test_auth = TestAuth()
 test_restore = TestRestore()
+test_settings = TestSettings()
 
 
 @app.route('/')
@@ -59,6 +61,22 @@ def restore():
         test_restore.test_05_fill_inputs_correct_personal()
         test_restore.test_06_fill_inputs_correct_mobile()
         test_restore.test_07_fill_inputs_correct_data()
+
+        return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+
+@app.route('/user_settings', methods=['GET', 'POST'])
+def user_settings():
+    try:
+        test_settings.setUpClass()
+        test_settings.test_02_settings()
+        test_settings.test_03_my_profile_section()
+        test_settings.test_04_password_section()
+        test_settings.test_05_history_section()
+        test_settings.test_06_change_photo()
+        test_settings.test_07_logout()
 
         return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
     except Exception as e:

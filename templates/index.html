@@ -14,6 +14,7 @@
         <button id="interface">ინტერფეისი</button>
         <button id="auth">ავტორიზაცია</button>
         <button id="restore">მონაცემების აღდგენა</button>
+        <button id="user_settings">პარამეტრები</button>
 
     </section>
 
@@ -43,6 +44,17 @@
         });
         document.getElementById('restore').addEventListener('click', function() {
             fetch('/restore', {
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                alert(data.message);
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+        document.getElementById('user_settings').addEventListener('click', function() {
+            fetch('/user_settings', {
                 method: 'POST'
             }).then(function(response) {
                 return response.json();
