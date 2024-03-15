@@ -100,7 +100,7 @@ class TestAuth(unittest.TestCase):
 
         self.driver.find_element(By.XPATH, "/html/body/div/div/div/section/div[2]/div[1]/div[1]/div[2]/div").click()
         time.sleep(2)
-        self.driver.find_element(By.ID, "nameOfTheLoan").send_keys("სასესხო სახელი")
+        self.driver.find_element(By.ID, "nameOfTheLoan").send_keys("შეცვლილი სახელი")
         time.sleep(2)
         self.driver.find_element(By.ID, "modalOK").click()
         time.sleep(2)
