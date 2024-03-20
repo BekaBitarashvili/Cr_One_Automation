@@ -49,7 +49,7 @@ class TestCurrency(unittest.TestCase):
         self.driver.find_element(By.ID, "otp-2").send_keys("1")
         self.driver.find_element(By.ID, "otp-3").send_keys("1")
         self.driver.find_element(By.ID, "otp-4").send_keys("1")
-        time.sleep(2)
+        time.sleep(3)
 
     def test_02_currency(self):
         self.driver.find_element(By.XPATH, "/html/body/div[1]/header/nav/ul/li[4]/span/a").click()
