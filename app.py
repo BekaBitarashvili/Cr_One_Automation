@@ -4,12 +4,14 @@ from automation_parts.interface import TestWebsite
 from automation_parts.auth import TestAuth
 from automation_parts.restore_data import TestRestore
 from automation_parts.user_settings import TestSettings
+from automation_parts.currency_exchange import TestCurrency
 
 app = Flask(__name__)
 test_website = TestWebsite()
 test_auth = TestAuth()
 test_restore = TestRestore()
 test_settings = TestSettings()
+test_currency = TestCurrency()
 
 
 @app.route('/')
@@ -77,6 +79,20 @@ def user_settings():
         test_settings.test_05_history_section()
         test_settings.test_06_change_photo()
         test_settings.test_07_logout()
+
+        return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+
+@app.route('/currency_exchange', methods=['GET', 'POST'])
+def currency_exchange():
+    try:
+        test_currency.setUpClass()
+        test_currency.test_01_login()
+        test_currency.test_02_currency()
+        test_currency.test_03_gel_to_usd()
+        test_currency.test_04_eur_to_usd()
 
         return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
     except Exception as e:

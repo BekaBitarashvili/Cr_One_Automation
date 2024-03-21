@@ -92,7 +92,9 @@ class TestCurrency(unittest.TestCase):
 
     def test_05_different_value(self):
         exch2_input = self.driver.find_element(By.ID, "InputBuyField")
-        exch2_input.clear()
+        for _ in range(3):
+            exch2_input.send_keys(Keys.BACKSPACE)
+        time.sleep(3)
         exch2_input.send_keys("5000")
         time.sleep(5)
         self.driver.find_element(By.ID, "reversBtn").click()
