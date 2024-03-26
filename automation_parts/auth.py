@@ -232,29 +232,10 @@ class TestAuth(unittest.TestCase):
         login_button.click()
         # OTP LOGIC
         time.sleep(3)
-        otp_field_1 = WebDriverWait(self.driver, 3).until(
-            ec.presence_of_element_located((By.XPATH, "/html/body/div/div/div/section/div[2]/form/div/div["
-                                                      "1]/div/div/div/div/div/input[1]"))
-        )
-        otp_field_1.send_keys("1")
-        time.sleep(2)
-        otp_field_2 = WebDriverWait(self.driver, 3).until(
-            ec.presence_of_element_located((By.XPATH, "/html/body/div/div/div/section/div[2]/form/div/div["
-                                                      "1]/div/div/div/div/div/input[2]"))
-        )
-        otp_field_2.send_keys("1")
-        time.sleep(2)
-        otp_field_3 = WebDriverWait(self.driver, 3).until(
-            ec.presence_of_element_located((By.XPATH, "/html/body/div/div/div/section/div[2]/form/div/div["
-                                                      "1]/div/div/div/div/div/input[3]"))
-        )
-        otp_field_3.send_keys("1")
-        time.sleep(2)
-        otp_field_4 = WebDriverWait(self.driver, 3).until(
-            ec.presence_of_element_located((By.XPATH, "/html/body/div/div/div/section/div[2]/form/div/div["
-                                                      "1]/div/div/div/div/div/input[4]"))
-        )
-        otp_field_4.send_keys("1")
+        self.driver.find_element(By.ID, "otp-1").send_keys("1")
+        self.driver.find_element(By.ID, "otp-2").send_keys("1")
+        self.driver.find_element(By.ID, "otp-3").send_keys("1")
+        self.driver.find_element(By.ID, "otp-4").send_keys("1")
         time.sleep(2)
 
         # otp_button = WebDriverWait(self.driver, 3).until(
