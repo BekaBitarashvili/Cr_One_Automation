@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class TestAuth(unittest.TestCase):
+class TestProducts(unittest.TestCase):
     driver = None
 
     @classmethod

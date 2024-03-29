@@ -5,6 +5,7 @@ from automation_parts.auth import TestAuth
 from automation_parts.restore_data import TestRestore
 from automation_parts.user_settings import TestSettings
 from automation_parts.currency_exchange import TestCurrency
+from automation_parts.products import TestProducts
 
 app = Flask(__name__)
 test_website = TestWebsite()
@@ -12,6 +13,7 @@ test_auth = TestAuth()
 test_restore = TestRestore()
 test_settings = TestSettings()
 test_currency = TestCurrency()
+test_products = TestProducts()
 
 
 @app.route('/')
