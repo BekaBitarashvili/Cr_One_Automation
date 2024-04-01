@@ -15,7 +15,11 @@
         <button id="auth">ავტორიზაცია</button>
         <button id="restore">მონაცემების აღდგენა</button>
         <button id="user_settings">პარამეტრები</button>
+        <button id="currency_exchange">ვალუტის კურსი</button>
 
+    </section>
+    <section>
+        <button id="products">პროდუქტები</button>
     </section>
 
     <script>
@@ -55,6 +59,28 @@
         });
         document.getElementById('user_settings').addEventListener('click', function() {
             fetch('/user_settings', {
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                alert(data.message);
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+        document.getElementById('currency_exchange').addEventListener('click', function() {
+            fetch('/currency_exchange', {
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                alert(data.message);
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+        document.getElementById('products').addEventListener('click', function() {
+            fetch('/products', {
                 method: 'POST'
             }).then(function(response) {
                 return response.json();
