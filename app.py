@@ -101,6 +101,20 @@ def currency_exchange():
         return jsonify({'status': 'error', 'message': str(e)})
 
 
+@app.route('/products', methods=['GET', 'POST'])
+def products():
+    try:
+        test_products.setUpClass()
+        test_products.test_01_login()
+        test_products.test_02_loans()
+        test_products.test_03_agreement_buttons()
+        test_products.test_04_change_loan_name()
+
+        return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+
 # error handling
 @app.errorhandler(404)
 def page_not_found(e):
