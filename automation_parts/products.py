@@ -45,11 +45,12 @@ class TestProducts(unittest.TestCase):
         self.driver.find_element(By.ID, "password").send_keys("Zvikilo13!")
         self.driver.find_element(By.ID, "login-btn").click()
         time.sleep(4)
-        self.driver.find_element(By.ID, "otp-1").send_keys("1")
-        self.driver.find_element(By.ID, "otp-2").send_keys("1")
-        self.driver.find_element(By.ID, "otp-3").send_keys("1")
-        self.driver.find_element(By.ID, "otp-4").send_keys("1")
+        self.driver.find_element(By.ID, "otp-1").send_keys("0")
+        self.driver.find_element(By.ID, "otp-2").send_keys("0")
+        self.driver.find_element(By.ID, "otp-3").send_keys("0")
+        self.driver.find_element(By.ID, "otp-4").send_keys("0")
         time.sleep(2)
+        self.driver.find_element(By.ID, "otp-btn").click()
 
     def test_02_loans(self):
         time.sleep(3)
