@@ -115,7 +115,7 @@ class TestSettings(unittest.TestCase):
 
         time.sleep(2)
 
-        pyautogui.typewrite("Desktop\\default.jpg")
+        pyautogui.typewrite("Desktop\\p.jpg")
         time.sleep(2)
         pyautogui.press("enter")
         time.sleep(2)

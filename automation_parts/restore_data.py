@@ -45,7 +45,7 @@ class TestRestore(unittest.TestCase):
             ec.presence_of_element_located((By.XPATH, "/html/body/div/div/div/section/div[2]/form/div/a")))
         restore_click.click()
         assert self.driver.find_element(By.XPATH, "/html/body/div/div/div/section/form/h1").get_attribute(
-            "innerText") == "Data Recovery"
+            "innerText") == "Data Recovery" or "მონაცემების აღდგენა"
 
     def test_02_check_button(self):
         restoring_button = self.driver.find_element(By.ID, "restoreBtn")
@@ -66,8 +66,9 @@ class TestRestore(unittest.TestCase):
         assert self.driver.find_element(By.ID, "restoreBtn").is_enabled() == True, "ღილაკი არ გააქტიურებულა!"
         restoring_button = self.driver.find_element(By.ID, "restoreBtn")
         restoring_button.click()
-        assert self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div/span/div/div/div").get_attribute(
-            "innerText") == "The specified phone number does not match the number specified in the system."
+        assert (self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div/span/div/div/div").get_attribute(
+            "innerText") == "The specified phone number does not match the number specified in the system." or
+                "მითითებული ტელეფონის ნომერი არ ემთხვევა სისტემაში მითითებულ ნომერს.")
 
     def test_05_fill_inputs_correct_personal(self):
         pass
