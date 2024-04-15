@@ -46,10 +46,15 @@ class TestSettings(unittest.TestCase):
         self.driver.find_element(By.ID, "password").send_keys("Zvikilo13!")
         self.driver.find_element(By.ID, "login-btn").click()
         time.sleep(4)
-        self.driver.find_element(By.ID, "otp-1").send_keys("1")
-        self.driver.find_element(By.ID, "otp-2").send_keys("1")
-        self.driver.find_element(By.ID, "otp-3").send_keys("1")
-        self.driver.find_element(By.ID, "otp-4").send_keys("1")
+        self.driver.find_element(By.ID, "otp-1").send_keys("0")
+        self.driver.find_element(By.ID, "otp-2").send_keys("0")
+        self.driver.find_element(By.ID, "otp-3").send_keys("0")
+        self.driver.find_element(By.ID, "otp-4").send_keys("0")
+        time.sleep(2)
+        otp_button = WebDriverWait(self.driver, 3).until(
+            ec.element_to_be_clickable((By.ID, "login-btn"))
+        )
+        otp_button.click()
         time.sleep(2)
 
     def test_02_statements_page(self):

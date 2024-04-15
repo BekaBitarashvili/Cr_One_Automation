@@ -50,7 +50,10 @@ class TestProducts(unittest.TestCase):
         self.driver.find_element(By.ID, "otp-3").send_keys("0")
         self.driver.find_element(By.ID, "otp-4").send_keys("0")
         time.sleep(2)
-        self.driver.find_element(By.ID, "otp-btn").click()
+        otp_button = WebDriverWait(self.driver, 3).until(
+            ec.element_to_be_clickable((By.ID, "login-btn"))
+        )
+        otp_button.click()
 
     def test_02_loans(self):
         time.sleep(3)

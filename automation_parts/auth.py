@@ -232,16 +232,16 @@ class TestAuth(unittest.TestCase):
         login_button.click()
         # OTP LOGIC
         time.sleep(3)
-        self.driver.find_element(By.ID, "otp-1").send_keys("1")
-        self.driver.find_element(By.ID, "otp-2").send_keys("1")
-        self.driver.find_element(By.ID, "otp-3").send_keys("1")
-        self.driver.find_element(By.ID, "otp-4").send_keys("1")
+        self.driver.find_element(By.ID, "otp-1").send_keys("0")
+        self.driver.find_element(By.ID, "otp-2").send_keys("0")
+        self.driver.find_element(By.ID, "otp-3").send_keys("0")
+        self.driver.find_element(By.ID, "otp-4").send_keys("0")
         time.sleep(2)
 
-        # otp_button = WebDriverWait(self.driver, 3).until(
-        #     ec.element_to_be_clickable((By.ID, "login-btn"))
-        # )
-        # otp_button.click()
+        otp_button = WebDriverWait(self.driver, 3).until(
+            ec.element_to_be_clickable((By.ID, "login-btn"))
+        )
+        otp_button.click()
         time.sleep(3)
 
 
