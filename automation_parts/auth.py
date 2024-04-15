@@ -239,7 +239,7 @@ class TestAuth(unittest.TestCase):
         time.sleep(2)
 
         otp_button = WebDriverWait(self.driver, 3).until(
-            ec.element_to_be_clickable((By.ID, "login-btn"))
+            ec.element_to_be_clickable((By.ID, "requestCodeAgain"))
         )
         otp_button.click()
         time.sleep(3)
