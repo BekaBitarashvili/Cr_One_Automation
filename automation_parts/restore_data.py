@@ -56,25 +56,47 @@ class TestRestore(unittest.TestCase):
         for inp in inputs:
             assert inp.get_attribute("value") == "", "ველები არ არის ცარიელი!"
 
-    def test_04_fill_inputs_incorrect_data(self):
-        personal_num = self.driver.find_elements(By.XPATH, "/html/body/div/div/div/section/form/div/div["
-                                                           "1]/div/div/div/div/span/input")
-        personal_num[0].send_keys("11111111111")
-        mob_num = self.driver.find_elements(By.XPATH, "/html/body/div/div/div/section/form/div/div["
-                                                      "2]/div/div/div/div/span/input")
-        mob_num[0].send_keys("555555555")
+    def test_04_fill_inputs_correct_data(self):
+        x = 6
+        while x > 0:
+            send_keys('{DOWN}')
+            x -= 1
+        personal_num = self.driver.find_elements(By.ID, "personal_id")
+        personal_num[0].send_keys("18001021014")
+        mob_num = self.driver.find_elements(By.ID, "phone")
+        mob_num[0].send_keys("577121157")
         assert self.driver.find_element(By.ID, "restoreBtn").is_enabled() == True, "ღილაკი არ გააქტიურებულა!"
         restoring_button = self.driver.find_element(By.ID, "restoreBtn")
         restoring_button.click()
-        assert (self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div/span/div/div/div").get_attribute(
-            "innerText") == "The specified phone number does not match the number specified in the system." or
-                "მითითებული ტელეფონის ნომერი არ ემთხვევა სისტემაში მითითებულ ნომერს.")
+        time.sleep(2)
 
-    def test_05_fill_inputs_correct_personal(self):
-        pass
+    def test_05_type_6digit_code(self):
+        self.driver.find_element(By.TAG_NAME, "body").click()
+        x = 6
+        while x > 0:
+            send_keys('{DOWN}')
+            x -= 1
+        time.sleep(3)
+        self.driver.find_element(By.ID, "otp-1").send_keys("0")
+        self.driver.find_element(By.ID, "otp-2").send_keys("0")
+        self.driver.find_element(By.ID, "otp-3").send_keys("0")
+        self.driver.find_element(By.ID, "otp-4").send_keys("0")
+        self.driver.find_element(By.ID, "otp-5").send_keys("0")
+        self.driver.find_element(By.ID, "otp-6").send_keys("0")
+        time.sleep(3)
+        request_code = self.driver.find_element(By.ID, "requestCodeAgain")
+        request_code.click()
+        time.sleep(3)
 
-    def test_06_fill_inputs_correct_mobile(self):
-        pass
-
-    def test_07_fill_inputs_correct_data(self):
-        pass
+    def test_06_new_password(self):
+        self.driver.find_element(By.TAG_NAME, "body").click()
+        x = 4
+        while x > 0:
+            send_keys('{UP}')
+            x -= 1
+        first_pass = self.driver.find_element(By.ID, "newPassword")
+        first_pass.send_keys("123123123G")
+        time.sleep(2)
+        second_pass = self.driver.find_element(By.ID, "repeatPassword")
+        second_pass.send_keys("123123123G")
+        time.sleep(4)
