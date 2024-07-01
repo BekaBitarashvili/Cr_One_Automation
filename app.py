@@ -61,10 +61,9 @@ def restore():
         test_restore.test_01_restore_data_button()
         test_restore.test_02_check_button()
         test_restore.test_03_check_inputs()
-        test_restore.test_04_fill_inputs_incorrect_data()
-        test_restore.test_05_fill_inputs_correct_personal()
-        test_restore.test_06_fill_inputs_correct_mobile()
-        test_restore.test_07_fill_inputs_correct_data()
+        test_restore.test_04_fill_inputs_correct_data()
+        test_restore.test_05_type_6digit_code()
+        test_restore.test_06_new_password()
 
         return jsonify({'status': 'success', 'message': 'სკრიპტი დასრულდა წარმატებით!'})
     except Exception as e:

@@ -42,8 +42,8 @@ class TestSettings(unittest.TestCase):
             i -= 1
         time.sleep(2)
 
-        self.driver.find_element(By.ID, "username").send_keys("testOnline")
-        self.driver.find_element(By.ID, "password").send_keys("Zvikilo13!")
+        self.driver.find_element(By.ID, "username").send_keys("Akido123123")
+        self.driver.find_element(By.ID, "password").send_keys("vardisferiVardi1")
         self.driver.find_element(By.ID, "login-btn").click()
         time.sleep(4)
         self.driver.find_element(By.ID, "otp-1").send_keys("0")
@@ -115,7 +115,7 @@ class TestSettings(unittest.TestCase):
 
         time.sleep(2)
 
-        pyautogui.typewrite("Desktop\\p.jpg")
+        pyautogui.typewrite("Desktop\\default.jpg")
         time.sleep(2)
         pyautogui.press("enter")
         time.sleep(2)
