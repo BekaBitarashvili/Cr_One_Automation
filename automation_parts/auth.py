@@ -11,7 +11,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -23,7 +23,11 @@ class TestAuth(unittest.TestCase):
         options = Options()
         options.add_experimental_option("detach", True)
 
-        cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        chromedriver_path = "C:/Users/b.bitarashvili/Downloads/chromedriver_win32/chromedriver.exe"
+        service = Service(chromedriver_path)
+        cls.driver = webdriver.Chrome(service=service, options=options)
+
+        # cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         cls.driver.implicitly_wait(3)
         cls.driver.maximize_window()
 
@@ -32,7 +36,7 @@ class TestAuth(unittest.TestCase):
         pass
 
     def test_01_incorrect_user_and_pass(self):
-        self.driver.get("http://10.117.27.38:8090")
+        self.driver.get("https://dev.crystalone.ge/")
         time.sleep(3)
         self.driver.find_element(By.TAG_NAME, 'html').click()
         i = 5

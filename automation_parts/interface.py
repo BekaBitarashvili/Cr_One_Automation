@@ -32,7 +32,7 @@ class TestWebsite(unittest.TestCase):
         pass
 
     def test_01_crystal_logo(self):
-        self.driver.get("http://10.117.27.38:8090")
+        self.driver.get("https://dev.crystalone.ge/")
         time.sleep(2)
         self.driver.find_element(By.TAG_NAME, "html").click()
 

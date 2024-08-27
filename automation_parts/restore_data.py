@@ -32,7 +32,7 @@ class TestRestore(unittest.TestCase):
         pass
 
     def test_01_restore_data_button(self):
-        self.driver.get("http://10.117.27.38:8090")
+        self.driver.get("https://dev.crystalone.ge/")
         time.sleep(3)
         self.driver.find_element(By.TAG_NAME, 'html').click()
         i = 5

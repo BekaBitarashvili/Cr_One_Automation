@@ -33,7 +33,7 @@ class TestSettings(unittest.TestCase):
         pass
 
     def test_01_login(self):
-        self.driver.get("http://10.117.27.38:8090")
+        self.driver.get("https://dev.crystalone.ge/")
         time.sleep(3)
         self.driver.find_element(By.TAG_NAME, 'html').click()
         i = 5
@@ -42,14 +42,15 @@ class TestSettings(unittest.TestCase):
             i -= 1
         time.sleep(2)
 
-        self.driver.find_element(By.ID, "username").send_keys("Akido123123")
-        self.driver.find_element(By.ID, "password").send_keys("vardisferiVardi1")
+        self.driver.find_element(By.ID, "username").send_keys("devtest3")
+        self.driver.find_element(By.ID, "password").send_keys("QWEasd123")
         self.driver.find_element(By.ID, "login-btn").click()
         time.sleep(4)
         self.driver.find_element(By.ID, "otp-1").send_keys("0")
         self.driver.find_element(By.ID, "otp-2").send_keys("0")
         self.driver.find_element(By.ID, "otp-3").send_keys("0")
         self.driver.find_element(By.ID, "otp-4").send_keys("0")
+        self.driver.find_element(By.ID, "requestCodeAgain").click()
         time.sleep(2)
         otp_button = WebDriverWait(self.driver, 3).until(
             ec.element_to_be_clickable((By.ID, "requestCodeAgain"))
