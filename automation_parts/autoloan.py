@@ -123,3 +123,6 @@ class TestWebsite(unittest.TestCase):
         autolink = self.driver.find_element(By.ID, "car_url")
         autolink.send_keys("https://www.google.com/")
         time.sleep(1)
+
+    def test_06_autoloan_images(self):
+        pass
