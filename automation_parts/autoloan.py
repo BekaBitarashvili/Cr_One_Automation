@@ -1,7 +1,9 @@
 import json
 import unittest
 import time
+import random
 
+import pyautogui
 from selenium.webdriver.support.ui import Select
 from pywinauto.keyboard import send_keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -56,6 +58,8 @@ class TestWebsite(unittest.TestCase):
 
     def test_02_autoloan_button(self):
         time.sleep(3)
+        # self.driver.find_element(By.XPATH, "/html/body/div[2]/header/nav/ul/li[2]/span/a/div").click()
+        # self.driver.find_element(By.ID, "1").click()
         self.driver.get("https://dev.crystalone.ge/autoLoan")
 
     def test_03_consent_to_data(self):
@@ -72,14 +76,14 @@ class TestWebsite(unittest.TestCase):
         time.sleep(2)
 
     def test_05_autoloan_application_section1(self):
-        self.driver.find_element(By.ID, "amount").send_keys("33333")
+        self.driver.find_element(By.ID, "amount").send_keys(random.randint(10000, 99999))
         time.sleep(1)
         autoduration = self.driver.find_element(By.ID, "duration")
         autoduration.click()
         autoduration.send_keys(Keys.ARROW_DOWN)
         autoduration.send_keys(Keys.ENTER)
         time.sleep(1)
-        self.driver.find_element(By.ID, "pmt").send_keys("3333")
+        self.driver.find_element(By.ID, "pmt").send_keys(random.randint(1000, 9999))
         time.sleep(1)
         autopayment = self.driver.find_element(By.ID, "payment_day")
         autopayment.click()
@@ -125,4 +129,30 @@ class TestWebsite(unittest.TestCase):
         time.sleep(1)
 
     def test_06_autoloan_images(self):
-        pass
+        firstimage = self.driver.find_element(By.XPATH,
+                                              "/html/body/div[2]/div/div/section/form/section/div/div["
+                                              "4]/div/div/div/div/div/div/div[1]/span/div/span/div")
+        firstimage.click()
+        time.sleep(2)
+        pyautogui.typewrite("C:\\Users\\b"
+                            ".bitarashvili"
+                            "\\Desktop"
+                            "\\default.jpg")
+        pyautogui.press("enter")
+
+        secondimage = self.driver.find_element(By.XPATH,
+                                               "/html/body/div[2]/div/div/section/form/section/div/div["
+                                               "4]/div/div/div/div/div/div/div[2]/span/div/span/div")
+        secondimage.click()
+        time.sleep(2)
+        pyautogui.typewrite("C:\\Users\\b"
+                            ".bitarashvili"
+                            "\\Desktop"
+                            "\\p.jpg")
+        pyautogui.press("enter")
+
+    def test_07_autoloan_submit_button(self):
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/form/section/div/div["
+                                           "5]/div/div/div/div/button").click()
+        time.sleep(3)
+        self.driver.find_element(By.ID, "modalOK").click()
