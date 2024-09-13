@@ -129,6 +129,7 @@ class TestWebsite(unittest.TestCase):
         time.sleep(1)
 
     def test_06_autoloan_images(self):
+        #first image
         firstimage = self.driver.find_element(By.XPATH,
                                               "/html/body/div[2]/div/div/section/form/section/div/div["
                                               "4]/div/div/div/div/div/div/div[1]/span/div/span/div")
@@ -139,7 +140,7 @@ class TestWebsite(unittest.TestCase):
                             "\\Desktop"
                             "\\default.jpg")
         pyautogui.press("enter")
-
+        # second image
         secondimage = self.driver.find_element(By.XPATH,
                                                "/html/body/div[2]/div/div/section/form/section/div/div["
                                                "4]/div/div/div/div/div/div/div[2]/span/div/span/div")
@@ -149,6 +150,28 @@ class TestWebsite(unittest.TestCase):
                             ".bitarashvili"
                             "\\Desktop"
                             "\\p.jpg")
+        pyautogui.press("enter")
+        # third image
+        thirdimage = self.driver.find_element(By.XPATH,
+                                              "/html/body/div[2]/div/div/section/form/section/div/div["
+                                              "4]/div/div/div/div/div/div/div[3]/span/div/span/div")
+        thirdimage.click()
+        time.sleep(2)
+        pyautogui.typewrite("C:\\Users\\b"
+                            ".bitarashvili"
+                            "\\Desktop"
+                            "\\prof_image.png")
+        pyautogui.press("enter")
+        # fourth image
+        fourthimage = self.driver.find_element(By.XPATH,
+                                               "/html/body/div[2]/div/div/section/form/section/div/div["
+                                               "4]/div/div/div/div/div/div/div[4]/span/div/span/div")
+        fourthimage.click()
+        time.sleep(2)
+        pyautogui.typewrite("C:\\Users\\b"
+                            ".bitarashvili"
+                            "\\Desktop"
+                            "\\prof_jpeg.jpg")
         pyautogui.press("enter")
 
     def test_07_autoloan_submit_button(self):
