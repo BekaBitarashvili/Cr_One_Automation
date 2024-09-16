@@ -129,7 +129,7 @@ class TestWebsite(unittest.TestCase):
         time.sleep(1)
 
     def test_06_autoloan_images(self):
-        #first image
+        # first image
         firstimage = self.driver.find_element(By.XPATH,
                                               "/html/body/div[2]/div/div/section/form/section/div/div["
                                               "4]/div/div/div/div/div/div/div[1]/span/div/span/div")
