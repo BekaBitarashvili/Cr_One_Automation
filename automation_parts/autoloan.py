@@ -83,7 +83,9 @@ class TestWebsite(unittest.TestCase):
             send_keys('{DOWN}')
             x -= 1
         time.sleep(2)
-        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/label/span[1]/input").click()
+        self.driver.find_element(By.ID, "isChecked").click()
+        time.sleep(2)
+        self.driver.find_element(By.ID, "isChecked2").click()
 
     def test_04_agree_button(self):
         self.driver.find_element(By.ID, "confirm-btn").click()
