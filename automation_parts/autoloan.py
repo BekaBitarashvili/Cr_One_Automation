@@ -25,9 +25,23 @@ class TestWebsite(unittest.TestCase):
     def setUpClass(cls):
         options = Options()
         options.add_experimental_option("detach", True)
-        cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+        # chromedriver_path = "C:/Users/b.bitarashvili/Downloads/chromedriver_win64/chromedriver.exe"
+        chromedriver_path = "C:/Users/b.bitarashvili/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe"
+        service = Service(chromedriver_path)
+        cls.driver = webdriver.Chrome(service=service, options=options)
+
+        # cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         cls.driver.implicitly_wait(3)
         cls.driver.maximize_window()
+
+    # @classmethod
+    # def setUpClass(cls):
+    #     options = Options()
+    #     options.add_experimental_option("detach", True)
+    #     cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    #     cls.driver.implicitly_wait(3)
+    #     cls.driver.maximize_window()
 
     @classmethod
     def tearDownClass(cls):
