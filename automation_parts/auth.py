@@ -13,6 +13,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 # from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class TestAuth(unittest.TestCase):
@@ -22,14 +23,13 @@ class TestAuth(unittest.TestCase):
     def setUpClass(cls):
         options = Options()
         options.add_experimental_option("detach", True)
-
-        chromedriver_path = "C:/Users/b.bitarashvili/Downloads/chromedriver_win32/chromedriver.exe"
-        service = Service(chromedriver_path)
-        cls.driver = webdriver.Chrome(service=service, options=options)
-
-        # cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         cls.driver.implicitly_wait(3)
         cls.driver.maximize_window()
+
+
+        # cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
 
     @classmethod
     def tearDownClass(cls):
