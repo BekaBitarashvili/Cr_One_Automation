@@ -99,26 +99,25 @@ class TestWebsite(unittest.TestCase):
         time.sleep(2)
 
     def test_06_income_types(self):
-        sector = self.driver.find_element(By.ID, "sector")
+        sector = self.driver.find_element(By.ID, "0.sector")
         sector.click()
         sector.send_keys(Keys.ARROW_DOWN)
         sector.send_keys(Keys.ENTER)
         time.sleep(1)
-        income_field = self.driver.find_element(By.ID, "field")
+        income_field = self.driver.find_element(By.ID, "0.field")
         income_field.click()
         income_field.send_keys(Keys.ARROW_DOWN)
         income_field.send_keys(Keys.ENTER)
         time.sleep(1)
-        subfield = self.driver.find_element(By.ID, "subField")
+        subfield = self.driver.find_element(By.ID, "0.subField")
         subfield.click()
         subfield.send_keys(Keys.ARROW_DOWN)
         subfield.send_keys(Keys.ENTER)
         time.sleep(1)
-        amount = self.driver.find_element(By.ID, "amount")
+        amount = self.driver.find_element(By.ID, "0.amount")
         amount.send_keys(random.randint(1000, 9999))
         time.sleep(1)
-        income_currency = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div[1]/div["
-                                                             "1]/div[5]/div/div/div/div/div/div/div/span[1]/input")
+        income_currency = self.driver.find_element(By.ID, "0.currency")
         income_currency.click()
         income_currency.send_keys(Keys.ARROW_DOWN)
         income_currency.send_keys(Keys.ENTER)
@@ -129,28 +128,24 @@ class TestWebsite(unittest.TestCase):
         # დასამატებელია ღილაკი "დაამატე შემოსავალი"
         # დასამატებელია გზავნილის შემოსავლის ვარიანტი
 
-        submit_butt = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div["
-                                                         "3]/div/div/div/div/button")
+        submit_butt = self.driver.find_element(By.ID, "submit")
         submit_butt.click()
 
     def test_07_loan_details(self):
-        loan_amount = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div["
-                                                         "3]/div/div/div/div/div/input")
+        loan_amount = self.driver.find_element(By.ID, "details-amount")
         loan_amount.send_keys(random.randint(9999, 99999))
         time.sleep(1)
-        loan_duration = self.driver.find_element(By.ID, "duration")
+        loan_duration = self.driver.find_element(By.ID, "details-duration")
         loan_duration.click()
         loan_duration.send_keys(random.randint(12, 24))
         loan_duration.send_keys(Keys.ENTER)
         time.sleep(1)
-        payment_date = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div[2]/div["
-                                                          "2]/div/div/div/div/div/div/div/span[1]/input")
+        payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
         payment_date.click()
         payment_date.send_keys(Keys.ARROW_DOWN)
         payment_date.send_keys(Keys.ENTER)
         time.sleep(1)
-        payment_amount = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div["
-                                                            "3]/div/div/div/div/div/input")
+        payment_amount = self.driver.find_element(By.ID, "details-desiredMonthlyContribution")
         payment_amount.send_keys(random.randint(1000, 9999))
         time.sleep(1)
         branch = self.driver.find_element(By.ID, "branch")
@@ -163,7 +158,6 @@ class TestWebsite(unittest.TestCase):
         purposeoftheloan.send_keys(Keys.ARROW_DOWN)
         purposeoftheloan.send_keys(Keys.ENTER)
         time.sleep(1)
-        send_application = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/section/div/form/div["
-                                                              "6]/div/div/div/div/button")
+        send_application = self.driver.find_element(By.ID, "details-purposeOfTheLoan")
         send_application.click()
         time.sleep(2)
