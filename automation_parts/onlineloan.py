@@ -132,15 +132,11 @@ class TestWebsite(unittest.TestCase):
         submit_butt.click()
 
     def test_07_loan_details(self):
-        # loan_amount = self.driver.find_element(By.ID, "details-amount")
-        # loan_amount.send_keys(random.randint(9999, 99999))
         # ASSERT
+        assert self.driver.find_element(By.ID, "details-amount").is_displayed()
         time.sleep(1)
-        # loan_duration = self.driver.find_element(By.ID, "details-duration")
-        # loan_duration.click()
-        # loan_duration.send_keys(random.randint(12, 24))
-        # loan_duration.send_keys(Keys.ENTER)
         # ASSERT
+        assert self.driver.find_element(By.ID, "details-duration").is_displayed()
         time.sleep(1)
         payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
         payment_date.click()
