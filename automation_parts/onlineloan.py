@@ -2,6 +2,7 @@ import json
 import unittest
 import time
 import random
+from time import sleep
 
 import pyautogui
 from PIL.EpsImagePlugin import field
@@ -128,34 +129,51 @@ class TestWebsite(unittest.TestCase):
         # დასამატებელია ღილაკი "დაამატე შემოსავალი"
         # დასამატებელია გზავნილის შემოსავლის ვარიანტი
 
-        submit_butt = self.driver.find_element(By.ID, "submit")
-        submit_butt.click()
-
-    def test_07_loan_details(self):
-        # ASSERT
-        assert self.driver.find_element(By.ID, "details-amount").is_displayed()
-        time.sleep(1)
-        # ASSERT
-        assert self.driver.find_element(By.ID, "details-duration").is_displayed()
-        time.sleep(1)
-        payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
-        payment_date.click()
-        payment_date.send_keys(Keys.ARROW_DOWN)
-        payment_date.send_keys(Keys.ENTER)
-        time.sleep(1)
-        payment_amount = self.driver.find_element(By.ID, "details-desiredMonthlyContribution")
-        payment_amount.send_keys(random.randint(1000, 9999))
-        time.sleep(1)
-        branch = self.driver.find_element(By.ID, "branch")
-        branch.click()
-        branch.send_keys(Keys.ARROW_DOWN)
-        branch.send_keys(Keys.ENTER)
-        time.sleep(1)
-        purposeoftheloan = self.driver.find_element(By.ID, "details-purposeOfTheLoan")
-        purposeoftheloan.click()
-        purposeoftheloan.send_keys(Keys.ARROW_DOWN)
-        purposeoftheloan.send_keys(Keys.ENTER)
-        time.sleep(1)
-        send_application = self.driver.find_element(By.ID, "submit")
-        send_application.click()
+    def test_07_additional_functions(self):
+        attach_one = self.driver.find_element(By.ID, "0.fileAttachmentBTN")
+        attach_one.click()
         time.sleep(2)
+
+        image_window1 = self.driver.find_element(By.ID, "dragger-box")
+        time.sleep(2)
+        image_window1.click()
+        # pyautogui.typewrite("C:\\Users\\b"
+        #                     ".bitarashvili"
+        #                     "\\Desktop"
+        #                     "\\prof_image.png")
+        # pyautogui.press("enter")
+        time.sleep(5)
+        close_attach = self.driver.find_element(By.ID, "cancelBtn")
+        close_attach.click()
+        time.sleep(2)
+
+    # def test_08_loan_details(self):
+    #     submit_butt = self.driver.find_element(By.ID, "submit")
+    #     submit_butt.click()
+    #     # ASSERT
+    #     assert self.driver.find_element(By.ID, "details-amount").is_displayed()
+    #     time.sleep(1)
+    #     # ASSERT
+    #     assert self.driver.find_element(By.ID, "details-duration").is_displayed()
+    #     time.sleep(1)
+    #     payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
+    #     payment_date.click()
+    #     payment_date.send_keys(Keys.ARROW_DOWN)
+    #     payment_date.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     payment_amount = self.driver.find_element(By.ID, "details-desiredMonthlyContribution")
+    #     payment_amount.send_keys(random.randint(1000, 9999))
+    #     time.sleep(1)
+    #     branch = self.driver.find_element(By.ID, "branch")
+    #     branch.click()
+    #     branch.send_keys(Keys.ARROW_DOWN)
+    #     branch.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     purposeoftheloan = self.driver.find_element(By.ID, "details-purposeOfTheLoan")
+    #     purposeoftheloan.click()
+    #     purposeoftheloan.send_keys(Keys.ARROW_DOWN)
+    #     purposeoftheloan.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     send_application = self.driver.find_element(By.ID, "submit")
+    #     send_application.click()
+    #     time.sleep(2)
