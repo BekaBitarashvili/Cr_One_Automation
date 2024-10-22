@@ -2,6 +2,7 @@ import json
 import unittest
 import time
 import random
+from telnetlib import EC
 from time import sleep
 
 import pyautogui
@@ -99,7 +100,7 @@ class TestWebsite(unittest.TestCase):
         self.driver.find_element(By.ID, "confirm-btn").click()
         time.sleep(2)
 
-    def test_06_income_types(self):
+    def test_06_income_types1(self):
         sector = self.driver.find_element(By.ID, "0.sector")
         sector.click()
         sector.send_keys(Keys.ARROW_DOWN)
@@ -124,56 +125,88 @@ class TestWebsite(unittest.TestCase):
         income_currency.send_keys(Keys.ENTER)
         time.sleep(1)
 
+    # def test_06_income_types2(self):
+    #     sector = self.driver.find_element(By.ID, "1.sector")
+    #     sector.click()
+    #     sector.send_keys(Keys.ARROW_DOWN)
+    #     sector.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     income_field = self.driver.find_element(By.ID, "1.field")
+    #     income_field.click()
+    #     income_field.send_keys(Keys.ARROW_DOWN)
+    #     income_field.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     subfield = self.driver.find_element(By.ID, "1.subField")
+    #     subfield.click()
+    #     subfield.send_keys(Keys.ARROW_DOWN)
+    #     subfield.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+    #     amount = self.driver.find_element(By.ID, "1.amount")
+    #     amount.send_keys(random.randint(1000, 9999))
+    #     time.sleep(1)
+    #     income_currency = self.driver.find_element(By.ID, "1.currency")
+    #     income_currency.click()
+    #     income_currency.send_keys(Keys.ARROW_DOWN)
+    #     income_currency.send_keys(Keys.ENTER)
+    #     time.sleep(1)
+
+
+
+
         # დასამატებელია Attachment-ების ატვირთვა
         # დასამატებელია წაშლა
         # დასამატებელია ღილაკი "დაამატე შემოსავალი"
         # დასამატებელია გზავნილის შემოსავლის ვარიანტი
 
-    def test_07_additional_functions(self):
-        attach_one = self.driver.find_element(By.ID, "0.fileAttachmentBTN")
-        attach_one.click()
-        time.sleep(2)
-
-        image_window1 = self.driver.find_element(By.ID, "dragger-box")
-        time.sleep(2)
-        image_window1.click()
-        # pyautogui.typewrite("C:\\Users\\b"
-        #                     ".bitarashvili"
-        #                     "\\Desktop"
-        #                     "\\prof_image.png")
-        # pyautogui.press("enter")
-        time.sleep(5)
-        close_attach = self.driver.find_element(By.ID, "cancelBtn")
-        close_attach.click()
-        time.sleep(2)
-
-    # def test_08_loan_details(self):
-    #     submit_butt = self.driver.find_element(By.ID, "submit")
-    #     submit_butt.click()
-    #     # ASSERT
-    #     assert self.driver.find_element(By.ID, "details-amount").is_displayed()
-    #     time.sleep(1)
-    #     # ASSERT
-    #     assert self.driver.find_element(By.ID, "details-duration").is_displayed()
-    #     time.sleep(1)
-    #     payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
-    #     payment_date.click()
-    #     payment_date.send_keys(Keys.ARROW_DOWN)
-    #     payment_date.send_keys(Keys.ENTER)
-    #     time.sleep(1)
-    #     payment_amount = self.driver.find_element(By.ID, "details-desiredMonthlyContribution")
-    #     payment_amount.send_keys(random.randint(1000, 9999))
-    #     time.sleep(1)
-    #     branch = self.driver.find_element(By.ID, "branch")
-    #     branch.click()
-    #     branch.send_keys(Keys.ARROW_DOWN)
-    #     branch.send_keys(Keys.ENTER)
-    #     time.sleep(1)
-    #     purposeoftheloan = self.driver.find_element(By.ID, "details-purposeOfTheLoan")
-    #     purposeoftheloan.click()
-    #     purposeoftheloan.send_keys(Keys.ARROW_DOWN)
-    #     purposeoftheloan.send_keys(Keys.ENTER)
-    #     time.sleep(1)
-    #     send_application = self.driver.find_element(By.ID, "submit")
-    #     send_application.click()
+    # def test_07_additional_functions(self):
+    #     attach_one = self.driver.find_element(By.ID, "0.fileAttachmentBTN")
+    #     attach_one.click()
     #     time.sleep(2)
+    #
+    #     image_window1 = self.driver.find_element(By.ID, "dragger-box")
+    #     time.sleep(2)
+    #     image_window1.click()
+    #     # pyautogui.typewrite("C:\\Users\\b"
+    #     #                     ".bitarashvili"
+    #     #                     "\\Desktop"
+    #     #                     "\\prof_image.png")
+    #     # pyautogui.press("enter")
+    #     time.sleep(5)
+    #     close_attach = self.driver.find_element(By.ID, "cancelBtn")
+    #     close_attach.click()
+    #     time.sleep(2)
+
+    def test_08_loan_details(self):
+        submit_butt = self.driver.find_element(By.ID, "submit")
+        submit_butt.click()
+
+        loanassert = self.driver.find_element(By.ID, "details-amount")
+        loanassertvalue = loanassert.get_attribute("details-amount")
+        print(loanassertvalue)
+        time.sleep(1)
+        durationassert = self.driver.find_element(By.ID, "details-duration")
+        durationassertvalue = durationassert.get_attribute("details-duration")
+        print(durationassertvalue)
+
+        time.sleep(1)
+        payment_date = self.driver.find_element(By.ID, "details-paymentNumber")
+        payment_date.click()
+        payment_date.send_keys(Keys.ARROW_DOWN)
+        payment_date.send_keys(Keys.ENTER)
+        time.sleep(1)
+        payment_amount = self.driver.find_element(By.ID, "details-desiredMonthlyContribution")
+        payment_amount.send_keys(random.randint(1000, 9999))
+        time.sleep(1)
+        branch = self.driver.find_element(By.ID, "branch")
+        branch.click()
+        branch.send_keys(Keys.ARROW_DOWN)
+        branch.send_keys(Keys.ENTER)
+        time.sleep(1)
+        purposeoftheloan = self.driver.find_element(By.ID, "details-purposeOfTheLoan")
+        purposeoftheloan.click()
+        purposeoftheloan.send_keys(Keys.ARROW_DOWN)
+        purposeoftheloan.send_keys(Keys.ENTER)
+        time.sleep(1)
+        send_application = self.driver.find_element(By.ID, "submit")
+        send_application.click()
+        time.sleep(2)
