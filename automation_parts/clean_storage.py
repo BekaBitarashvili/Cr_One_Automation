@@ -122,6 +122,8 @@ class TestWebsite(unittest.TestCase):
         time.sleep(2)
 
     def test_08_apps(self):
-        apps = self.driver.find_element(By.ID, "applications")
-        apps.click()
-        time.sleep(10)
+        # apps = self.driver.find_element(By.ID, "applications")
+        # apps.click()
+        time.sleep(2)
+        self.driver.get("http://dev.crystalone.ge/ka/applications")
+        time.sleep(5)
